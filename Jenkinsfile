@@ -4,8 +4,6 @@ pipeline {
     stage('Build docker image') {
       steps {
         sh 'docker build . -f Dockerfile_bump_version -t cd_demo'
-      }
-      steps {
         sh 'git config user.name "nikhil-bhat"'
         sh 'git config user.email nikhilbhat2008@gmail.com'
         echo 'Current version:'
