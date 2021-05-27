@@ -23,7 +23,7 @@ pipeline {
         sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion major'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh("git add README.md")
-                sh("git commit -m "bump version")
+                sh("git commit -m 'bump version'")
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
        }    
       }
