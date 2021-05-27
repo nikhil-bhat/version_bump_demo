@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('install tools') {
       steps {
-        pysh 'pip install bumpversion'
+        withPythonEnv('python3') {
+    sh 'python --version'
+       }
       }
     }
 
