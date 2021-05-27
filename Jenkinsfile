@@ -20,6 +20,7 @@ pipeline {
       }
       steps {
        echo "bump major" 
+        sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion major'
       }
     }
   }
