@@ -33,4 +33,10 @@ pipeline {
   parameters {
     choice(choices: ['major' , 'minor', 'patch'], description: 'How to bump?', name: 'REQUESTED_ACTION')
   }
+  post {
+    always {
+        echo 'Cleaning workspace'
+        deleteDir()
+    }
+  }
 }
