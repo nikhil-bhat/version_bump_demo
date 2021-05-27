@@ -1,13 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('install tools') {
+    stage('Build docker image') {
       steps {
-        withPythonEnv('python3') {
-    sh 'python --version'
-       }
+        sh 'docker build . -f Dockerfile_bump_version -t cd_demo'
       }
     }
-
   }
 }
