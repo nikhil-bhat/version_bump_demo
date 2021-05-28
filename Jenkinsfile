@@ -57,7 +57,7 @@ pipeline {
       }
       steps {
         echo 'bump patvh'
-        sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion patvh'
+        sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion patch'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
        }    
