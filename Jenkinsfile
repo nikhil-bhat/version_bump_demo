@@ -29,6 +29,39 @@ pipeline {
        }    
       }
     }
+    
+    
+    
+      stage('bump minor') {
+      when {
+        expression {
+          params.REQUESTED_ACTION == 'minor'
+        }
+
+      }
+      steps {
+        echo 'bump minor'
+        sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion minor'
+        withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
+       }    
+      }
+        
+        
+          stage('bump patch') {
+      when {
+        expression {
+          params.REQUESTED_ACTION == 'patch'
+        }
+
+      }
+      steps {
+        echo 'bump patvh'
+        sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion patvh'
+        withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
+       }    
+      }
 
   }
   parameters {
