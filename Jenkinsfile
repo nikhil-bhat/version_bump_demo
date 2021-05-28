@@ -7,7 +7,7 @@ pipeline {
         sh 'git config user.name "nikhil-bhat"'
         sh 'git config user.email nikhilbhat2008@gmail.com'
         echo 'Current version:'
-        sh 'grep "Version: " README.md'
+        sh 'cat README.md'
       }
     }
 
