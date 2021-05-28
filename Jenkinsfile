@@ -21,6 +21,7 @@ pipeline {
       steps {
         echo 'bump major'
         sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion major'
+        sh 'cat README.md'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh("git add README.md")
                 sh("git commit -m 'bump version'")
