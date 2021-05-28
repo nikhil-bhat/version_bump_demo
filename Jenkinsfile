@@ -23,9 +23,8 @@ pipeline {
         sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion major'
         sh 'cat README.md'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                sh("git add README.md")
-                sh("git commit -m 'bump version' --allow-empty ")
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
+                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
        }    
       }
     }
@@ -43,7 +42,8 @@ pipeline {
         echo 'bump minor'
         sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion minor'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
+                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
        }    
       }
      }  
@@ -56,10 +56,11 @@ pipeline {
 
       }
       steps {
-        echo 'bump patvh'
+        echo 'bump patch'
         sh 'docker run -v `pwd`:/workspace -w /workspace cd_demo bumpversion patch'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
+                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git --tags')
        }    
       }
           }
