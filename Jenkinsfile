@@ -24,7 +24,7 @@ pipeline {
         sh 'cat README.md'
         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh("git add README.md")
-                sh("git commit -m --allow-empty 'bump version'")
+                sh("git commit -m 'bump version' --allow-empty ")
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
        }    
       }
