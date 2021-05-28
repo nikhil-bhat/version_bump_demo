@@ -46,7 +46,7 @@ pipeline {
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
        }    
       }
-        
+     }  
         
           stage('bump patch') {
       when {
@@ -62,6 +62,7 @@ pipeline {
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/nikhil-bhat/version_bump_demo.git')
        }    
       }
+          }
 
   }
   parameters {
